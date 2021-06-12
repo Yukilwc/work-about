@@ -1,1 +1,0 @@
-import{p as a,i as e,o as s,c as o,w as t}from"./vendor.a80de75c.js";const c={components:{},data:()=>({}),created(){},mounted(){},methods:{}},d=t();a("data-v-4aec3ae9");const n={class:"c-h1"};e();const r=d(((a,e,t,c,d,r)=>(s(),o("div",n,"收录"))));c.render=r,c.__scopeId="data-v-4aec3ae9";export default c;
