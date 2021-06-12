@@ -49,7 +49,8 @@ export default defineComponent({
 function initSwiper() {
   console.log("==========测试方法");
   let s = new Swiper(".swiper-container-1", {
-    spaceBetween: 60,
+    // spaceBetween: 60,
+    freeMode: true,
   });
   return s;
 }
@@ -61,10 +62,11 @@ function initSwiper() {
   min-height: 394px;
   background: #f8f9fd;
   padding: 40px 0 20px;
+  overflow: hidden;
   .wrapper {
     width: 1200px;
     margin: auto;
-    @itemW: 384px;
+    @itemW: 384px+60px;
     .swiper-container-1 {
       width: @itemW;
       .swiper-wrapper {
@@ -76,21 +78,23 @@ function initSwiper() {
           -khtml-user-select: none; /*早期浏览器*/
           user-select: none;
           cursor: grab;
+          padding-right: 60px;
+          box-sizing: border-box;
           .year {
-            width: @itemW;
+            width: 100%;
             width: 100%;
             font-size: 24px;
             font-weight: 800;
             color: #22293c;
           }
           .line {
+            width: 100%;
             margin-top: 10px;
-            width: @itemW;
             height: 1px;
             background: #d8d9dc;
           }
           .m-list {
-            width: @itemW;
+            width: 100%;
             .item {
               margin-top: 24px;
               width: 100%;
