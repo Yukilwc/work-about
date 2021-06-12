@@ -10,8 +10,8 @@
       <swiper-1></swiper-1>
     </div>
     <!--  -->
-    <div class="c-h2">横向-拖动-单元素</div>
-    <div class="c-desc"></div>
+    <!-- <div class="c-h2">横向-拖动-单元素</div> -->
+    <!-- <div class="c-desc"></div> -->
     <!--  -->
     <div class="c-h2">平缓动画的走马灯-多元素列表</div>
     <div class="c-desc"></div>

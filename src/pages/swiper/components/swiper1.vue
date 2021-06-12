@@ -50,7 +50,14 @@ function initSwiper() {
   console.log("==========测试方法");
   let s = new Swiper(".swiper-container-1", {
     // spaceBetween: 60,
+    mousewheel: true,
     freeMode: true,
+    // autoplay: {
+    //   delay: 0,
+    //   disableOnInteraction: false,
+    // },
+    // speed: 3000,
+    // loop: true,
   });
   return s;
 }
@@ -70,6 +77,9 @@ function initSwiper() {
     .swiper-container-1 {
       width: @itemW;
       .swiper-wrapper {
+        // transition-timing-function: linear;
+        // -o-transition-timing-function: linear;
+        // -webkit-transition-timing-function: linear;
         .swiper-slide {
           width: @itemW;
           -moz-user-select: none; /*火狐*/
@@ -79,7 +89,7 @@ function initSwiper() {
           user-select: none;
           cursor: grab;
           padding-right: 60px;
-          box-sizing: border-box;
+          //   box-sizing: border-box;
           .year {
             width: 100%;
             width: 100%;
