@@ -1,2 +1,18 @@
 @import "./tools.scss";
 @include project-init;
+.c-h1 {
+    font-size: 30px;
+    padding: 10px 0;
+    text-align: center;
+}
+.c-h2 {
+    font-size: 22px;
+    padding: 10px 0;
+}
+.c-desc {
+    font-size: 14px;
+    padding: 4px 0;
+}
+.c-content {
+    padding: 10px;
+}

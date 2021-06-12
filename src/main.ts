@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './utils/setRem'
+// import './utils/setRem'
 import './style/global.scss'
 import router from './router/index'
 import componentsPlugin from './plugins/components'

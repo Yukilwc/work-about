@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="c-h1">收录</div>
 </template>
 
 <script>
