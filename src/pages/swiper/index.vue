@@ -28,7 +28,7 @@
 import { defineComponent, onMounted } from "vue";
 import Swiper1 from "./components/swiper1.vue";
 import Swiper2 from "./components/swiper2.vue";
-// import { scrollToDom } from "../../utils/tools";
+import { ScrollTrigger } from "../../utils/tools";
 export default defineComponent({
   components: {
     Swiper1,
@@ -44,6 +44,15 @@ export default defineComponent({
       //     time: 500,
       //   });
       // }, 3000);
+      new ScrollTrigger().add({
+        instance: 100, // 触发间距
+        enter: () => {
+          console.log("==========enter");
+        },
+        leave: () => {
+          console.log("==========leave");
+        },
+      });
     });
     return {};
   },

@@ -448,13 +448,13 @@ function getPageTop(el: Element): number {
     return actualTop
 
 }
-interface ScrollOptions {
+interface IScrollOptions {
     center?: () => void,
     leave?: () => void,
     offset?: number,
     time?: number,
 }
-function scrollToDom(selector: string, options: ScrollOptions) {
+function scrollToDom(selector: string, options: IScrollOptions) {
     const spacingTime = 15; // 设置循环的间隔时间  值越小消耗性能越高
     let time = options.time || 5000
     let node = document.querySelector(selector)
@@ -479,10 +479,49 @@ function scrollToDom(selector: string, options: ScrollOptions) {
     }, spacingTime);
 }
 
+// 滚动触发器
+interface ITrigger {
+    instance: number,// 触发间距
+    enter?: () => void, // scrollTop到达时触发的函数
+    leave?: () => void, // scrollTop小于时触发的函数
+    scrollFunc?: () => void,
+    // hasEntered?: boolean,
+}
+class ScrollTrigger {
+    list: ITrigger[] = [] // 函数表
+    add = (t: ITrigger) => {
+        let func = () => {
+            let scrollTop = document.documentElement.scrollTop
+            if (scrollTop >= t.instance) {
+                // if (t.enter&&!t.hasEntered) {
+                if (t.enter) {
+                    t.enter()
+                    // t.hasEntered = true
+                }
+            }
+            else {
+                if (t.leave) {
+                    t.leave()
+                    // t.hasEntered = true
+                }
+
+            }
+        }
+        window.addEventListener('scroll', func)
+        t.scrollFunc = func
+        this.list.push(t)
+    }
+
+    // 销毁全部
+    destroy = () => {
+
+    }
+}
 export {
     DateTime,
     BrowserSizeLocation,
     IRelativeLoc,
     BrowserOperator,
-    scrollToDom
+    scrollToDom,
+    ScrollTrigger
 }
