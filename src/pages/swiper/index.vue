@@ -14,6 +14,11 @@
     <div class="c-h2">平缓动画的走马灯-多元素列表</div>
     <div class="c-desc"></div>
     <swiper-2></swiper-2>
+    <!-- <swiper-2></swiper-2>
+    <swiper-2></swiper-2>
+    <swiper-2></swiper-2>
+    <div class="c-h2" id="scrollId">滚动测试</div>
+    <swiper-2></swiper-2> -->
   </div>
 </template>
 
@@ -21,6 +26,7 @@
 import { defineComponent, onMounted } from "vue";
 import Swiper1 from "./components/swiper1.vue";
 import Swiper2 from "./components/swiper2.vue";
+import { scrollToDom } from "../../utils/tools";
 export default defineComponent({
   components: {
     Swiper1,
@@ -28,7 +34,13 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      //
+      setTimeout(() => {
+        scrollToDom("#scrollId", {
+          center: () => {},
+          leave: () => {},
+          offset: 0,
+        });
+      }, 3000);
     });
     return {};
   },

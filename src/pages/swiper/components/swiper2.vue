@@ -7,7 +7,7 @@
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide" v-for="(item, index) in 24" :key="index">
+            <div class="swiper-slide" v-for="(item, index) in 10" :key="index">
               <div class="img-wrapper">
                 <img
                   class="image"
@@ -67,6 +67,7 @@ function initSwiper() {
     loop: true,
     slidesPerView: "auto",
     // slidesPerColumn: 2,
+    loopedSlides: 48,
   });
   return s;
 }

@@ -422,17 +422,38 @@ class BrowserOperator {
     // 这里火狐的scrollwidth计算，为文本长度+padding占位的一半
     // 据测试，火狐不可使用此方案
     // visibility hidden方案,也不考虑，其消失会造成文档流错位抖动，并且是修改原件，容易引发未知错误，因此还是使用clone方案
-   
+
 
 }
 class URLOperator {
     // 提取hash和query
     // 添加/删除/修改query
 }
+interface ScrollOptions {
+    center?: () => void,
+    leave?: () => void,
+    offset?: Number,
+    time?: Number,
+}
+function scrollToDom(selector: String, options: ScrollOptions) {
+    const spacingTime = 20; // 设置循环的间隔时间  值越小消耗性能越高
+    let index = options.time / spacingTime; // 计算循环的次数
+    let now = document.body.scrollTop + document.documentElement.scrollTop; // 获取当前滚动条位置
+    let rollDistance = (distance - now) / index; // 计算每次滑动的距离
+    let rollTimer = setInterval(() => {
+        if (index > 0) {
+            index--;
+            rollTo(now += rollDistance);
+        } else {
+            clearInterval(rollTimer); // 清除计时器
+        }
+    }, spacingTime);
+}
 
 export {
     DateTime,
     BrowserSizeLocation,
     IRelativeLoc,
-    BrowserOperator
+    BrowserOperator,
+    scrollToDom
 }
