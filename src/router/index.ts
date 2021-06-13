@@ -9,6 +9,10 @@ const routes = [
         path: '/swiper',
         component: () => import('../pages/swiper/index.vue')
     },
+    {
+        path: '/work',
+        component: () => import('../pages/work/index.vue')
+    },
     // {
     //     path: '/',
     //     component: () => import('../pages/manga/allList/index.vue')

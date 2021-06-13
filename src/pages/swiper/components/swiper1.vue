@@ -1,11 +1,36 @@
 <template>
-  <div class="area">
+  <div class="develop-area">
+    <div class="develop-wrapper">
+      <div class="title">发展历程</div>
+      <div class="progress">
+        <div class="progress-wrapper">
+          <div
+            class="item"
+            v-for="(item, index) in 5"
+            :key="index"
+            :class="index === 0 ? 'item--active' : ''"
+          >
+            <div class="item-wrapper">
+              <div class="text">2021</div>
+              <div class="row">
+                <div class="ball">
+                  <div class="center"></div>
+                </div>
+                <div class="line" v-if="index !== 4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="develop-swiper-area">
     <div class="wrapper">
       <div class="swiper-container-1">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
-          <div class="swiper-slide" v-for="(item, index) in 8" :key="index">
+          <div class="swiper-slide" v-for="(item, index) in 5" :key="index">
             <div class="year">2020</div>
             <div class="line"></div>
             <div class="m-list">
@@ -64,7 +89,114 @@ function initSwiper() {
 </script>
 
 <style scoped lang="less">
-.area {
+.develop-area {
+  width: 100%;
+  height: 364px;
+  background-image: linear-gradient(gray 0, gray 100%);
+  background-repeat: no-repeat;
+  background-size: 1920px 100%;
+  background-position: center center;
+
+  .develop-wrapper {
+    width: 100%;
+    height: 100%;
+    .title {
+      padding-top: 124px;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: center;
+    }
+    .progress {
+      margin-top: 47px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .progress-wrapper {
+        display: flex;
+        align-items: center;
+        .item {
+          position: relative;
+          margin-right: 86px;
+          &:nth-last-child(1) {
+            margin-right: 0;
+          }
+          .item-wrapper {
+            position: relative;
+            .text {
+              position: absolute;
+              top: -35px;
+              left: 50%;
+              transform: translateX(-50%);
+              -webkit-transform: translateX(-50%);
+              -ms-transform: translateX(-50%);
+              -moz-transform: translateX(-50%);
+              -o-transform: translateX(-50%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 16px;
+              font-weight: 500;
+              color: #ffffff;
+              opacity: 0.6;
+            }
+            .row {
+              position: relative;
+              margin-top: 35px;
+              .ball {
+                position: relative;
+                z-index: 1;
+                width: 24px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .center {
+                  display: none;
+                  width: 16px;
+                  height: 16px;
+                  background: #ffffff;
+                  border-radius: 50%;
+                }
+              }
+              .line {
+                top: 11px;
+                left: 24px;
+                position: absolute;
+                width: 86px;
+                height: 2px;
+                background: #ffffff;
+                opacity: 0.5;
+              }
+            }
+          }
+          &.item--active {
+            .item-wrapper {
+              .text {
+                font-weight: 800;
+                opacity: 1;
+              }
+              .row {
+                .ball {
+                  .center {
+                    display: block;
+                  }
+                }
+                .line {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.develop-swiper-area {
   width: 100%;
   min-height: 394px;
   background: #f8f9fd;
