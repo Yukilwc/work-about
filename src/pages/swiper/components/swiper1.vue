@@ -50,7 +50,7 @@ function initSwiper() {
   console.log("==========测试方法");
   let s = new Swiper(".swiper-container-1", {
     // spaceBetween: 60,
-    mousewheel: true,
+    // mousewheel: true,
     freeMode: true,
     // autoplay: {
     //   delay: 0,
