@@ -28,7 +28,7 @@
 import { defineComponent, onMounted } from "vue";
 import Swiper1 from "./components/swiper1.vue";
 import Swiper2 from "./components/swiper2.vue";
-import { scrollToDom } from "../../utils/tools";
+// import { scrollToDom } from "../../utils/tools";
 export default defineComponent({
   components: {
     Swiper1,
