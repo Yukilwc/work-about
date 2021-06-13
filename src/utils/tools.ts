@@ -428,24 +428,53 @@ class BrowserOperator {
 class URLOperator {
     // 提取hash和query
     // 添加/删除/修改query
+
+}
+// 距离页面顶部距离
+function getPageTop(el: Element): number {
+    const node = el as HTMLElement
+    var actualTop = node.offsetTop
+
+    var current = node.offsetParent as HTMLElement
+
+    while (current !== null) {
+
+        actualTop += current.offsetTop
+
+        current = current.offsetParent as HTMLElement
+
+    }
+
+    return actualTop
+
 }
 interface ScrollOptions {
     center?: () => void,
     leave?: () => void,
-    offset?: Number,
-    time?: Number,
+    offset?: number,
+    time?: number,
 }
-function scrollToDom(selector: String, options: ScrollOptions) {
-    const spacingTime = 20; // 设置循环的间隔时间  值越小消耗性能越高
-    let index = options.time / spacingTime; // 计算循环的次数
-    let now = document.body.scrollTop + document.documentElement.scrollTop; // 获取当前滚动条位置
-    let rollDistance = (distance - now) / index; // 计算每次滑动的距离
-    let rollTimer = setInterval(() => {
-        if (index > 0) {
-            index--;
-            rollTo(now += rollDistance);
+function scrollToDom(selector: string, options: ScrollOptions) {
+    const spacingTime = 15; // 设置循环的间隔时间  值越小消耗性能越高
+    let time = options.time || 5000
+    let node = document.querySelector(selector)
+    if (!node) throw new Error('目标节点不存在')
+    // let targetNodeInstance = node.getBoundingClientRect().top
+    let targetNodeInstance = getPageTop(node)
+    // 循环次数
+    let count = time / spacingTime; // 计算循环的次数
+    // 计算距离
+    let nowInstance = document.body.scrollTop + document.documentElement.scrollTop; // 获取当前滚动条位置
+    let scrollDistance = targetNodeInstance - nowInstance; // 计算每次滑动的距离
+    let scrollSpanDistance = scrollDistance / count
+    console.log('==========开始滚动', count, targetNodeInstance)
+    // console.log('==========滚动id', selector, node)
+    let interval = setInterval(() => {
+        if (count > 0) {
+            count--;
+            document.documentElement.scrollTop = nowInstance += scrollSpanDistance
         } else {
-            clearInterval(rollTimer); // 清除计时器
+            clearInterval(interval); // 清除计时器
         }
     }, spacingTime);
 }

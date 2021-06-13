@@ -18,6 +18,8 @@
     <swiper-2></swiper-2>
     <swiper-2></swiper-2>
     <div class="c-h2" id="scrollId">滚动测试</div>
+    <swiper-2></swiper-2>
+    <swiper-2></swiper-2>
     <swiper-2></swiper-2> -->
   </div>
 </template>
@@ -34,13 +36,14 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      setTimeout(() => {
-        scrollToDom("#scrollId", {
-          center: () => {},
-          leave: () => {},
-          offset: 0,
-        });
-      }, 3000);
+      // setInterval(() => {
+      //   scrollToDom("#scrollId", {
+      //     center: () => {},
+      //     leave: () => {},
+      //     offset: 0,
+      //     time: 500,
+      //   });
+      // }, 3000);
     });
     return {};
   },
