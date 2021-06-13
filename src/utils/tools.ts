@@ -510,11 +510,16 @@ class ScrollTrigger {
         window.addEventListener('scroll', func)
         t.scrollFunc = func
         this.list.push(t)
+        return this
     }
 
     // 销毁全部
     destroy = () => {
-
+        this.list.forEach(item => {
+            if (item.scrollFunc) {
+                window.removeEventListener('scroll', item.scrollFunc)
+            }
+        })
     }
 }
 export {

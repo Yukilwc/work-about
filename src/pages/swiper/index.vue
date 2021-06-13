@@ -44,7 +44,7 @@ export default defineComponent({
       //     time: 500,
       //   });
       // }, 3000);
-      new ScrollTrigger().add({
+      const instance = new ScrollTrigger().add({
         instance: 100, // 触发间距
         enter: () => {
           console.log("==========enter");
@@ -53,6 +53,9 @@ export default defineComponent({
           console.log("==========leave");
         },
       });
+      setTimeout(() => {
+        instance.destroy();
+      }, 5000);
     });
     return {};
   },
