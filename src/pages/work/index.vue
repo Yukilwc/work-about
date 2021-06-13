@@ -27,13 +27,45 @@
         </div>
       </div>
     </div>
-    <div class="team-area"></div>
+    <div class="team-area">
+      <div class="team-wrapper">
+        <div class="title-panel">我们的团队风采</div>
+        <div class="row">
+          <div class="tabs-panel">
+            <div class="tabs-wrapper">
+              <div class="tab-list">
+                <div
+                  class="tab-item"
+                  v-for="(item, index) in 4"
+                  :key="index"
+                  :class="index === teamTabIndex ? 'tab-item--active' : ''"
+                  @click="() => {}"
+                >
+                  <div class="tab-wrapper">工作场景</div>
+                </div>
+              </div>
+              <div class="move-bg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-panel">
+          <div class="list">
+            <div class="item" v-for="(item, index) in 8" :key="index">
+              <img
+                class="image"
+                src="https://pic.iyingdi.com/post/content/2021/06/09/1a0b06d7-9d69-471f-ad0e-e23a9157cb31.jpg?imageMogr2/format/jpg|imageMogr2/quality/70"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <swiper-2></swiper-2>
   </div>
 </template>
 
 <script lang='ts'>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import Swiper1 from "../swiper/components/swiper1.vue";
 import Swiper2 from "../swiper/components/swiper2.vue";
 
@@ -44,7 +76,10 @@ export default defineComponent({
   },
   setup(props, context) {
     onMounted(() => {});
-    return {};
+    let teamTabIndex = ref(0);
+    return {
+      teamTabIndex,
+    };
   },
 });
 </script>
@@ -136,6 +171,122 @@ export default defineComponent({
               color: #656977;
               margin-top: 22px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+.team-area {
+  width: 100%;
+  padding-bottom: 64px;
+  .team-wrapper {
+    width: 100%;
+    .title-panel {
+      padding-top: 52px;
+      font-size: 30px;
+      font-weight: 800;
+      color: #24262b;
+      text-align: center;
+    }
+    .row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .tabs-panel {
+        height: 46px;
+        background: #f1f4f9;
+        border-radius: 23px;
+        margin-top: 26px;
+        padding: 0 5px;
+        .tabs-wrapper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          .tab-list {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            .tab-item {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              transition: all 0.35s;
+              width: 124px;
+              height: 38px;
+              border-radius: 19px;
+              cursor: pointer;
+              margin-right: 16px;
+              &:last-child {
+                margin-right: 0;
+              }
+              .tab-wrapper {
+                transition: all 0.35s;
+                font-size: 14px;
+                font-weight: 500;
+                color: #656977;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              &.tab-item--active {
+                .tab-wrapper {
+                  color: var(--theme-color);
+                  font-weight: bold;
+                }
+              }
+              &:hover {
+                .tab-wrapper {
+                  color: var(--theme-color);
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+          .move-bg {
+            top: 4px;
+            left: 0px;
+            position: absolute;
+            width: 124px;
+            height: 38px;
+            background: #ffffff;
+            box-shadow: 0px 3px 14px 0px #e9edf4;
+            border-radius: 19px;
+          }
+        }
+      }
+    }
+    .content-panel {
+      width: 1200px;
+      margin: auto;
+      margin-top: 52px;
+      .list {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .item {
+          margin-right: 24px;
+          width: 282px;
+          height: 244px;
+          border-radius: 18px;
+          overflow: hidden;
+          &:nth-child(4n) {
+            margin-right: 0;
+          }
+          &:nth-child(n + 5) {
+            margin-top: 24px;
+          }
+          .image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
         }
       }
