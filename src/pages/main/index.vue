@@ -11,7 +11,7 @@
   <div class="c-h2">click-shadow指令测试</div>
   <div class="c-content">
     <div class="">
-      <el-button v-click-shadow type="primary">阴影按钮</el-button>
+      <button v-click-shadow>阴影按钮</button>
     </div>
 
     <div class="" style="margin-top: 20px">
