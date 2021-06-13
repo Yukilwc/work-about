@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "element-plus": "^1.0.2-beta.48",
     "lottie-web": "^5.7.8",
     "swiper": "^6.7.0",
     "vue": "^3.0.5",
