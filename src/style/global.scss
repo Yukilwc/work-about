@@ -16,3 +16,45 @@
 .c-content {
     padding: 10px;
 }
+
+.click-shadow {
+    box-shadow: 0 0 0 2px #1890ff33;
+}
+[fa-click-animating-shadow="true"]::after {
+    --antd-wave-shadow-color: rgb(64, 169, 255);
+}
+
+[fa-click-animating-shadow="true"]:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    border-radius: inherit;
+    box-shadow: 0 0 #1890ff;
+    box-shadow: 0 0 var(--antd-wave-shadow-color);
+    opacity: 0.2;
+    -webkit-animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1),
+        waveEffect 0.4s cubic-bezier(0.08, 0.82, 0.17, 1);
+    animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect 0.4s cubic-bezier(0.08, 0.82, 0.17, 1);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    content: "";
+    pointer-events: none;
+}
+
+$wave-animation-width: 6px;
+$primary-color: #1890ff;
+@keyframes waveEffect {
+    100% {
+        box-shadow: 0 0 0 $primary-color;
+        box-shadow: 0 0 0 $wave-animation-width var(--antd-wave-shadow-color);
+    }
+}
+
+@keyframes fadeEffect {
+    100% {
+        opacity: 0;
+    }
+}

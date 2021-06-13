@@ -1,6 +1,6 @@
 import { VNode, DirectiveBinding } from "vue";
 
-const EventOutside = {
+const ClickShadow = {
     // 指令是具有一组生命周期的钩子：
     // 在绑定元素的 attribute 或事件监听器被应用之前调用
     created() { },
@@ -8,21 +8,27 @@ const EventOutside = {
     beforeMount() { },
     // 绑定元素的父组件被挂载时调用
     mounted(el: HTMLElement, binding: DirectiveBinding, vnode: VNode) {
-        // console.log('==========binding', binding)
-        // console.log('==========vnode', vnode)
-        Reflect.set(el, 'clickOutsideEvent',
+        console.log('==========binding', binding)
+        console.log('==========vnode', vnode)
+        Reflect.set(el, 'clickShadowEvent',
             (event: MouseEvent) => {
-                // here I check that click was outside the el and his children
-                if (!(el == event.target || el.contains(event.target as Node))) {
-                    // and if it did, call method provided in attribute value
-                    // vnode.context[binding.value](event);
-                    binding.value(event)
+                console.log('==========触发鼠标松开操作',)
+                const attrName = 'fa-click-animating-shadow'
+                el.style['position'] = 'relative'
+                el.removeAttribute(attrName);
+                el.setAttribute(attrName, 'true');
+                function aniEndFunc() {
+                    console.log('==========动画结束',)
+                    el.setAttribute(attrName, 'false');
                 }
+                el.addEventListener('animationend', aniEndFunc)
+
             }
         )
         // console.log('==========el添加', el, el.clickOutsideEvent)
 
-        document.body.addEventListener('click', Reflect.get(el, 'clickOutsideEvent'))
+        el.addEventListener('mouseup', Reflect.get(el, 'clickShadowEvent'))
+
     },
     // 在包含组件的 VNode 更新之前调用
     beforeUpdate() { },
@@ -33,8 +39,7 @@ const EventOutside = {
     beforeUnmount() { },
     // 卸载绑定元素的父组件时调用
     unmounted(el: HTMLElement) {
-        document.body.removeEventListener('click', Reflect.get(el, 'clickOutsideEvent'))
-        // console.log('==========el移除', el, el.clickOutsideEvent)
+        el.removeEventListener('click', Reflect.get(el, 'clickShadowEvent'))
     }
 }
-export default EventOutside
+export default ClickShadow

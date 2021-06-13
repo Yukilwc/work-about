@@ -7,6 +7,17 @@
   <div class="c-content">
     <button v-event-outside="handleEventOutside" v-if="show">区域</button>
   </div>
+
+  <div class="c-h2">click-shadow指令测试</div>
+  <div class="c-content">
+    <div class="">
+      <button v-click-shadow>阴影按钮</button>
+    </div>
+
+    <div class="" style="margin-top: 20px">
+      <input value="阴影输入框" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
