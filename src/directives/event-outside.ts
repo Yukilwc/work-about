@@ -20,7 +20,7 @@ const EventOutside = {
                 }
             }
         )
-        console.log('==========el添加', el, el.clickOutsideEvent)
+        // console.log('==========el添加', el, el.clickOutsideEvent)
 
         document.body.addEventListener('click', Reflect.get(el, 'clickOutsideEvent'))
     },
@@ -34,7 +34,7 @@ const EventOutside = {
     // 卸载绑定元素的父组件时调用
     unmounted(el: HTMLElement) {
         document.body.removeEventListener('click', Reflect.get(el, 'clickOutsideEvent'))
-        console.log('==========el移除', el, el.clickOutsideEvent)
+        // console.log('==========el移除', el, el.clickOutsideEvent)
     }
 }
 export default EventOutside
