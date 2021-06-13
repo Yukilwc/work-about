@@ -522,6 +522,16 @@ class ScrollTrigger {
         })
     }
 }
+// class ClickOutside {
+//     node: HTMLElement | null = null
+//     callback: Function | null = null
+//     register = (func: Function) => {
+//         this.callback = Function
+//     }
+//     remove = () => {
+
+//     }
+// }
 export {
     DateTime,
     BrowserSizeLocation,
