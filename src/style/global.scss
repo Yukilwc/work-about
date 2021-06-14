@@ -58,3 +58,11 @@ $primary-color: #1890ff;
         opacity: 0;
     }
 }
+
+@font-face {
+    font-family: "my-font";
+    src: url("../font/PingFangSC.ttf") format("truetype");
+}
+* {
+    font-family: my-font !important;
+}
