@@ -13,6 +13,10 @@ const routes = [
         path: '/work',
         component: () => import('../pages/work/index.vue')
     },
+    {
+        path: '/scroll',
+        component: () => import('../pages/tools/scroll.vue')
+    },
     // {
     //     path: '/',
     //     component: () => import('../pages/manga/allList/index.vue')

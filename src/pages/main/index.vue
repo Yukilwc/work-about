@@ -3,6 +3,9 @@
   <div class="container">
     <router-link to="/swiper" class="c-h2">Swiper风格收录</router-link>
   </div>
+  <div class="container">
+    <router-link to="/scroll" class="c-h2">滚动工具收录</router-link>
+  </div>
   <div class="c-h2">outside指令测试</div>
   <div class="c-content">
     <button v-event-outside="handleEventOutside" v-if="show">区域</button>
