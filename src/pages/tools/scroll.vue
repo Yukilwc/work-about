@@ -15,21 +15,23 @@
 </template>
 
 <script lang='ts'>
-import { frameScrollToDom } from "../../utils/scroll";
+import { frameScrollToDom, frameScrollToDomAsync } from "../../utils/scroll";
 import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   components: {},
   setup(props, context) {
     onMounted(() => {});
-    const toDom = () => {
+    const toDom = async () => {
       console.log("==========开始滚动到指定dom");
-      frameScrollToDom({
+      await frameScrollToDomAsync({
         selector: ".area-6",
-        animate: "linear",
+        animate: "ease",
         step: 45,
+        rate: 20,
         offset: -100,
       });
+      console.log("==========滚动结束");
     };
     return {
       toDom,
