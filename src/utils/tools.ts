@@ -652,5 +652,6 @@ export {
     IRelativeLoc,
     BrowserOperator,
     scrollToDom,
-    ScrollTrigger
+    ScrollTrigger,
+    getPageTop
 }
