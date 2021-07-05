@@ -2,9 +2,9 @@
  * @Author: 李文超
  * @Date: 2021-04-06 10:38:44
  * @LastEditors: 李文超
- * @LastEditTime: 2021-04-09 11:52:04
+ * @LastEditTime: 2021-06-15 15:15:50
  * @Description: file content
- * @FilePath: \vite-typescript-project-for-test\src\utils\tools.ts
+ * @FilePath: \library\通用库\work-about\src\utils\tools.ts
  */
 // 由于浏览器差异和不一致，强烈建议不要使用Date.parse解析字符串
 // new Date(dateString)原理相同，因此谨慎使用
@@ -459,20 +459,19 @@ function scrollToDom(selector: string, options: IScrollOptions) {
     let time = options.time || 5000
     let node = document.querySelector(selector)
     if (!node) throw new Error('目标节点不存在')
-    // let targetNodeInstance = node.getBoundingClientRect().top
-    let targetNodeInstance = getPageTop(node)
+    let targetNodeDistance= getPageTop(node)
     // 循环次数
     let count = time / spacingTime; // 计算循环的次数
     // 计算距离
-    let nowInstance = document.body.scrollTop + document.documentElement.scrollTop; // 获取当前滚动条位置
-    let scrollDistance = targetNodeInstance - nowInstance; // 计算每次滑动的距离
+    let nowDistance= document.body.scrollTop + document.documentElement.scrollTop; // 获取当前滚动条位置
+    let scrollDistance = targetNodeDistance- nowDistance; // 计算每次滑动的距离
     let scrollSpanDistance = scrollDistance / count
-    console.log('==========开始滚动', count, targetNodeInstance)
+    console.log('==========开始滚动', count, targetNodeDistance)
     // console.log('==========滚动id', selector, node)
     let interval = setInterval(() => {
         if (count > 0) {
             count--;
-            document.documentElement.scrollTop = nowInstance += scrollSpanDistance
+            document.documentElement.scrollTop = nowDistance+= scrollSpanDistance
         } else {
             clearInterval(interval); // 清除计时器
         }
@@ -481,7 +480,7 @@ function scrollToDom(selector: string, options: IScrollOptions) {
 
 // 滚动触发器
 interface ITrigger {
-    instance: number,// 触发间距
+    distance: number,// 触发间距
     enter?: () => void, // scrollTop到达时触发的函数
     leave?: () => void, // scrollTop小于时触发的函数
     scrollFunc?: () => void,
@@ -492,7 +491,7 @@ class ScrollTrigger {
     add = (t: ITrigger) => {
         let func = () => {
             let scrollTop = document.documentElement.scrollTop
-            if (scrollTop >= t.instance) {
+            if (scrollTop >= t.distance) {
                 // if (t.enter&&!t.hasEntered) {
                 if (t.enter) {
                     t.enter()
@@ -531,6 +530,121 @@ class ScrollTrigger {
 //     remove = () => {
 
 //     }
+// }
+// function scrollToDom(selector, options) {
+//   const spacingTime = 15; // 设置循环的间隔时间  值越小消耗性能越高
+//   let time = options.time || 5000
+//   let node = document.querySelector(selector)
+//   if (!node) throw new Error('目标节点不存在')
+//   let targetNodeDistance = getPageTop(node)
+//   // 循环次数
+//   let count = time / spacingTime; // 计算循环的次数
+//   // 计算距离
+//   let nowDistance = document.documentElement.scrollTop; // 获取当前滚动条位置
+//   let scrollDistance = targetNodeDistance - nowDistance; // 计算每次滑动的距离
+//   // if(scrollDistance>=0){
+//   //   scrollDistance-=options.offset
+//   // }
+//   // else {
+//   //   scrollDistance-=options.offset
+
+//   // }
+//   let scrollSpanDistance = scrollDistance / count
+//   console.log('==========开始滚动', count, targetNodeDistance, scrollSpanDistance)
+//   // console.log('==========滚动id', selector, node)
+//   let interval = setInterval(() => {
+//     if (scrollSpanDistance >= 0) {
+//       if (nowDistance >= document.documentElement.scrollTop) {
+//         // 中止
+//         clearInterval(interval); // 清除计时器
+//       }
+//       else {
+//         document.documentElement.scrollTop = nowDistance += scrollSpanDistance
+//       }
+
+//     }
+//     else if (scrollSpanDistance < 0) {
+//       if (nowDistance >= document.documentElement.scrollTop) {
+//         clearInterval(interval); // 清除计时器
+
+//       }
+//       else {
+//         document.documentElement.scrollTop = nowDistance += scrollSpanDistance
+//       }
+//     }
+
+//   }, spacingTime);
+// }
+// class ScrollTrigger {
+//   list = [] // 函数表
+//   add = (t) => {
+//     let func = () => {
+//       let scrollTop = document.documentElement.scrollTop
+//       if (scrollTop >= t.distance) {
+//         // if (t.enter&&!t.hasEntered) {
+//         if (t.enter) {
+//           t.enter()
+//           // t.hasEntered = true
+//         }
+//       }
+//       else {
+//         if (t.leave) {
+//           t.leave()
+//           // t.hasEntered = true
+//         }
+
+//       }
+//     }
+//     window.addEventListener('scroll', func)
+//     t.scrollFunc = func
+//     this.list.push(t)
+//     return this
+//   }
+//   addDistanceList = (options) => {
+//     const distanceList = options.distanceList
+//     console.log('==========addDistanceList  options', distanceList)
+//     const func = () => {
+//       let scrollTop = document.documentElement.scrollTop
+//       let findIndex = 0
+//       const viewHeight = window.innerHeight
+//         || document.documentElement.clientHeight
+//         || document.body.clientHeight;
+//       let findRes = distanceList.find((item, index) => {
+//         if (index >= distanceList.length - 1) {
+//           // 最后一个元素了
+//           findIndex = index
+//           return true
+//         }
+//         const next = distanceList[index + 1]
+//         const current = distanceList[index]
+//         // 第一个元素特殊判断
+//         if (index === 0 && scrollTop < (current.distance + current.offset - viewHeight)) {
+//           findIndex = 0
+//           return true
+//         }
+
+//         if (scrollTop >= (current.distance + current.offset - viewHeight) && scrollTop < (next.distance + next.offset - viewHeight)) {
+//           findIndex = index
+//           return true
+//         }
+//       })
+//       options.enter(findIndex)
+//     }
+//     window.addEventListener('scroll', func)
+//     this.list.push({
+//       distanceList: distanceList,
+//       scrollFunc: func
+//     })
+
+//   }
+//   // 销毁全部
+//   destroy = () => {
+//     this.list.forEach(item => {
+//       if (item.scrollFunc) {
+//         window.removeEventListener('scroll', item.scrollFunc)
+//       }
+//     })
+//   }
 // }
 export {
     DateTime,
