@@ -17,6 +17,10 @@ const routes = [
         path: '/scroll',
         component: () => import('../pages/tools/scroll.vue')
     },
+    {
+        path: '/show-1',
+        component: () => import('../pages/showPage/show-1.vue')
+    },
     // {
     //     path: '/',
     //     component: () => import('../pages/manga/allList/index.vue')

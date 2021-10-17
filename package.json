@@ -8,6 +8,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons": "0.0.11",
     "aos": "^2.3.4",
     "element-plus": "^1.0.2-beta.48",
     "lottie-web": "^5.7.8",
@@ -28,7 +29,7 @@
     "postcss-plugin-px2rem": "^0.8.1",
     "sass": "^1.32.8",
     "typescript": "^4.1.3",
-    "vite": "^2.1.5",
+    "vite": "^2.6.5",
     "vue-tsc": "^0.0.15"
   }
 }

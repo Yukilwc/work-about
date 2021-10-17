@@ -1,5 +1,8 @@
 @import "./tools.scss";
 @include project-init;
+body {
+    --theme: #f86710;
+}
 .c-h1 {
     font-size: 30px;
     padding: 10px 0;
