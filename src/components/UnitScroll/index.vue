@@ -1,17 +1,12 @@
 <template>
-  <div>展示</div>
-  <div class="">数字滚动</div>
-  <UnitScroll></UnitScroll>
+  <div>数字滚动</div>
 </template>
 
 <script lang='ts'>
 import { defineComponent, onMounted } from "vue";
-import UnitScroll from "@/components/UnitScroll/index.vue";
 
 export default defineComponent({
-  components: {
-    UnitScroll,
-  },
+  components: {},
   setup(props, context) {
     onMounted(() => {});
     return {};

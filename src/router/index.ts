@@ -21,6 +21,10 @@ const routes = [
         path: '/show-1',
         component: () => import('../pages/showPage/show-1.vue')
     },
+    {
+        path: '/show-2',
+        component: () => import("@/pages/showPage/show-2.vue")
+    }
     // {
     //     path: '/',
     //     component: () => import('../pages/manga/allList/index.vue')
